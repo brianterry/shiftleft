@@ -82,7 +82,7 @@ cd $HOME_DIR/environment/shiftleft
 #source $HOME_DIR/.bash_profile
 
 # Install CDK v1
-npm install -g aws-cdk@1.134.0 --force
+npm install -g aws-cdk@1.174.0 --force
 #cdk --version
 #source $HOME_DIR/.bashrc
 #source $HOME_DIR/.bash_profile

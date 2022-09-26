@@ -52,7 +52,7 @@ mkdir -p $TMP_DIR
 
 
 # Install Python 3.8
-sudo amazon-linux-extras install python3.8 -y
+sudo yum search python 3.8
 
 # Uninstall AWSCLI v1
 sudo pip2 uninstall awscli -y

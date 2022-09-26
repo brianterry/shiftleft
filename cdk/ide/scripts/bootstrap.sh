@@ -22,7 +22,7 @@ mkdir -p $BIN_DIR
 mkdir -p $TMP_DIR
 
 #Clone the workshop repo
-#cd $ENV_DIR;git clone https://github.com/aws-samples/policy-as-code.git
+#cd $ENV_DIR;git clone https://github.com/aws-samples/shiftleft.git
 
 #Install Rust and Cargo
 #cd $HOME_DIR
@@ -50,9 +50,6 @@ mkdir -p $TMP_DIR
 #cp ./target/release/cfn-guard $BIN_DIR
 #cfn-guard --version
 
-# Grab Amazon Linux binary from EE assets bucket
-aws s3 cp s3://ee-assets-prod-us-east-1/modules/9a82be9ca37142d6905d3ed953047782/v1/cfn-guard $BIN_DIR/cfn-guard
-chmod +x $BIN_DIR/cfn-guard 
 
 # Install Python 3.8
 sudo amazon-linux-extras install python3.8 -y
@@ -72,12 +69,12 @@ source $HOME_DIR/.env/bin/activate
 
 # Install CDK python modules
 cd $HOME_DIR
-pip install -r $HOME_DIR/environment/policy-as-code/cdk/app/requirements.txt
-pip install -r $HOME_DIR/environment/policy-as-code/cdk/cicd/requirements.txt
+pip install -r $HOME_DIR/environment/shiftleft/cdk/app/requirements.txt
+pip install -r $HOME_DIR/environment/shiftleft/cdk/cicd/requirements.txt
 
 
-# Change directory to policy-as-code
-cd $HOME_DIR/environment/policy-as-code
+# Change directory to shiftleft
+cd $HOME_DIR/environment/shiftleft
 
 # Install NodeJS and NPM
 #wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -91,7 +88,7 @@ npm install -g aws-cdk@1.134.0 --force
 #source $HOME_DIR/.bash_profile
 
 # Deploy the pipeline for student exercises
-#cd $HOME_DIR/environment/policy-as-code/cdk/cicd
+#cd $HOME_DIR/environment/shiftleft/cdk/cicd
 pip install -r requirements.txt
 cdk bootstrap
 cdk deploy --all --require-approval never

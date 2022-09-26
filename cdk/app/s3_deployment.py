@@ -60,14 +60,6 @@ class S3AppStack(Stack):
                                        ]
                                    )
                                ],
-                               block_public_access=aws_cdk.aws_s3.BlockPublicAccess(
-                                   # Uncomment block_public_acls=True and remove block_public_acls=False
-                                   # block_public_acls=True,
-                                   block_public_acls=False,
-                                   restrict_public_buckets=True,
-                                   block_public_policy=True,
-                                   ignore_public_acls=True
-                               )
                                )
         # Adds a Tag Name->App, Value->policy-as-code
         for i in [bucket]:

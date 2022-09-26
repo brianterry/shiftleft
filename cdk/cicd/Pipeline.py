@@ -60,19 +60,12 @@ class Pipeline(core.Stack):
                 aws_codepipeline.StageProps(
                     stage_name='ScanDeploy',
                     actions=[
-                        aws_codepipeline_actions.CodeBuildAction(
-                            action_name='Scan',
-                            input=synth,
-                            project=props['cb_scan'],
-                            run_order=1,
-                            outputs=[scanned_source]
-                        ),
                         aws_codepipeline_actions.CloudFormationCreateReplaceChangeSetAction(
                             action_name='CreateChangeSet',
                             change_set_name=change_set_name,
                             stack_name=change_set_name,
                             # input=scanned_source,
-                            template_path=aws_codepipeline.ArtifactPath(artifact=scanned_source,file_name='cdk.out/policy-as-code.template.json'),
+                            template_path=aws_codepipeline.ArtifactPath(artifact=synth,file_name='cdk.out/policy-as-code.template.json'),
                             run_order=2,
                             cfn_capabilities=[aws_cloudformation.CloudFormationCapabilities.NAMED_IAM],
                             admin_permissions=True

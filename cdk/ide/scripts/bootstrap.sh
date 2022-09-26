@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo yum update -y
 #Add commands here to taste.
 # only switch to ec2-user if you are running from ssm run command otherwise cloud9 gives you an interactive shell
 #sudo su - ec2-user
@@ -15,7 +15,7 @@ sudo yum -y install jq bash-completion
 echo "export AWS_DEFAULT_REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document|jq -r .region`" >>  $HOME_DIR/.bash_profile
 echo "export AWS_ACCOUNT_ID=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document|jq -r .accountId`" >>  $HOME_DIR/.bash_profile
 #.  $HOME_DIR/.bash_profile
-source $HOME_DIR/.bash_profile
+#source $HOME_DIR/.bash_profile
 
 # Make directory for tools
 mkdir -p $BIN_DIR
@@ -52,7 +52,7 @@ mkdir -p $TMP_DIR
 
 
 # Install Python 3.8
-sudo yum search python 3.8
+sudo amazon-linux-extras install python3.8 -y
 
 # Uninstall AWSCLI v1
 sudo pip2 uninstall awscli -y
@@ -89,6 +89,6 @@ npm install -g aws-cdk@1.134.0 --force
 
 # Deploy the pipeline for student exercises
 #cd $HOME_DIR/environment/shiftleft/cdk/cicd
-pip install -r requirements.txt
-cdk bootstrap
-cdk deploy --all --require-approval never
+#pip install -r requirements.txt
+#cdk bootstrap
+#cdk deploy --all --require-approval never

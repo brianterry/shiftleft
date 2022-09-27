@@ -6,8 +6,8 @@ from aws_cdk.core import (
     Duration,
     Tags,
     App
-    )
-from aws_cdk import (    
+)
+from aws_cdk import (
     aws_s3,
     aws_kms,
     aws_iam,
@@ -47,9 +47,9 @@ class S3AppStack(Stack):
                                auto_delete_objects=False,
                                versioned=True,
                                public_read_access=True,
-                               
+
                                # Uncomment encryption=aws_s3.BucketEncryption.KMS, to enable encryption
-                               #encryption=aws_s3.BucketEncryption.KMS,
+                               # encryption=aws_s3.BucketEncryption.KMS,
 
                                lifecycle_rules=[
                                    aws_s3.LifecycleRule(
@@ -79,16 +79,52 @@ class S3AppStack(Stack):
         # Adds a Tag Name->App, Value->policy-as-code
         for i in [bucket]:
             Tags.of(i).add('App', 'policy-as-code')
-        
-       
-        s3_config_rule = aws_config.ManagedRule(self,'AwsConfigRuleS3',
+
+        s3_config_rule = aws_config.ManagedRule(self, 'AwsConfigRuleS3',
                                                 config_rule_name='S3PublicAccessSettings',
                                                 identifier=aws_config.ManagedRuleIdentifiers.S3_BUCKET_PUBLIC_READ_PROHIBITED,
                                                 description='Checks that your Amazon S3 buckets do not allow public read access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).',
-                                                maximum_execution_frequency= aws_config.MaximumExecutionFrequency.ONE_HOUR,
-                                                rule_scope=RuleScope.from_resource(ResourceType.S3_BUCKET, bucket.bucket_name)
-        )
-        
+                                                maximum_execution_frequency=aws_config.MaximumExecutionFrequency.ONE_HOUR,
+                                                rule_scope=RuleScope.from_resource(
+                                                    ResourceType.S3_BUCKET, bucket.bucket_name)
+                                                )
+
         # Insert Automation Role and CfnRemediationConfiguration
-        
+        #automation_assume_role = aws_iam.Role(self,
+        #                                      'AutomationAssumeRole',
+        #                                      assumed_by=ServicePrincipal(
+        #                                         'ssm.amazonaws.com'),
+        #                                      managed_policies=[ManagedPolicy.from_managed_policy_arn(
+        #                                          self, 'AmazonSSMAutomation', 'arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole')],
+        #                                      inline_policies={
+        #                                          "S3FullAccess":
+        #                                          PolicyDocument(
+        #                                              statements=[PolicyStatement(
+        #                                                  actions=["s3:*"], resources=[bucket.bucket_arn])]
+        #                                          )
+        #                                      }
+        #                                      )
+
+
+        #CfnRemediationConfiguration(self,
+        #                            'AwsConfigRemdiationS3',
+        #                            config_rule_name=s3_config_rule.config_rule_name,
+        #                            target_id='AWS-DisableS3BucketPublicReadWrite',
+        #                            target_type='SSM_DOCUMENT',
+        #                            automatic=True,
+        #                            maximum_automatic_attempts=3,
+        #                            retry_attempt_seconds=60,
+        #                            parameters={
+        #                                'AutomationAssumeRole': {
+        #                                    'StaticValue': {
+        #                                        'Values': [automation_assume_role.role_arn]
+        #                                    }
+        #                                },
+        #                                'BucketName': {
+        #                                    'ResourceValue': {
+        #                                        'Value': 'RESOURCE_ID'
+        #                                    }
+        #                                }
+        #                            }
+        #                            )
         # End of Automation Role and CfnRemediationConfiguration

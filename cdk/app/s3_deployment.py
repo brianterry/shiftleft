@@ -90,39 +90,5 @@ class S3AppStack(Stack):
         )
         
         # Insert Automation Role and CfnRemediationConfiguration
-        automation_assume_role = aws_iam.Role(self,
-                                      'AutomationAssumeRole',
-                                      assumed_by=ServicePrincipal('ssm.amazonaws.com'),
-                                      managed_policies=[ ManagedPolicy.from_managed_policy_arn(self, 'AmazonSSMAutomation', 'arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole') ],
-                                      inline_policies={
-                                          "S3FullAccess": 
-                                              PolicyDocument(
-                                                  statements=[ PolicyStatement(actions=[ "s3:*" ], resources=[ bucket.bucket_arn ]) ]
-                                              )
-                                      }
-        )
         
-        automation_assume_role.add_to_policy
-        
-        CfnRemediationConfiguration(self,
-                                    'AwsConfigRemdiationS3',
-                                    config_rule_name=s3_config_rule.config_rule_name,
-                                    target_id='AWS-DisableS3BucketPublicReadWrite',
-                                    target_type='SSM_DOCUMENT',
-                                    automatic=True,
-                                    maximum_automatic_attempts=3,
-                                    retry_attempt_seconds=60,
-                                    parameters={
-                                        'AutomationAssumeRole': {
-                                            'StaticValue': {
-                                                'Values': [ automation_assume_role.role_arn ]
-                                            }
-                                        },
-                                        'BucketName': {
-                                            'ResourceValue': {
-                                                'Value': 'RESOURCE_ID'
-                                            }
-                                        }
-                                    }
-        )
         # End of Automation Role and CfnRemediationConfiguration

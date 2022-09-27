@@ -67,7 +67,7 @@ class Pipeline(core.Stack):
                             # input=scanned_source,
                             template_path=aws_codepipeline.ArtifactPath(artifact=synth,file_name='cdk.out/policy-as-code.template.json'),
                             run_order=2,
-                            cfn_capabilities=[aws_cloudformation.CloudFormationCapabilities.NAMED_IAM],
+                            cfn_capabilities=[core.CfnCapabilities.NAMED_IAM],
                             admin_permissions=True
                         ),
                         aws_codepipeline_actions.CloudFormationExecuteChangeSetAction(

@@ -66,6 +66,7 @@ source $HOME_DIR/.bashrc
 cd $HOME_DIR
 python3.8 -m venv $HOME_DIR/.env
 source $HOME_DIR/.env/bin/activate
+pip install --upgrade pip
 
 # Install CDK python modules
 cd $HOME_DIR

@@ -7,7 +7,6 @@ phases:
       - rm -rf .python-version
   build:
     commands:
-      - regula run -i ./custom-rules main.tf
       - terraform init
       - terraform apply -auto-approve
 artifacts:

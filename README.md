@@ -1,7 +1,7 @@
 # Shift Left Workshop
 
 ## Overview
-This repo contains the [Shift Left](). Refer to the [Getting Started]() guide for details.
+This repo contains the [Shift Left]() workshop. Refer to the [Getting Started]() guide for details.
 
 ## Repo structure
 

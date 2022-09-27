@@ -89,7 +89,6 @@ class S3AppStack(Stack):
                                                     ResourceType.S3_BUCKET, bucket.bucket_name)
                                                 )
 
-        # Insert Automation Role and CfnRemediationConfiguration
         #automation_assume_role = aws_iam.Role(self,
         #                                      'AutomationAssumeRole',
         #                                      assumed_by=ServicePrincipal(
@@ -120,7 +119,7 @@ class S3AppStack(Stack):
         #                                        'Values': [automation_assume_role.role_arn]
         #                                    }
         #                                },
-        #                                'BucketName': {
+        #                                'S3BucketName': {
         #                                    'ResourceValue': {
         #                                        'Value': 'RESOURCE_ID'
         #                                    }

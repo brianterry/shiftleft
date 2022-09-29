@@ -1,7 +1,9 @@
 from aws_cdk.core import (
     App,
     Environment,
+    Aspects,
 )
+from cdk_nag import ( AwsSolutionsChecks )
 import os
 import pathlib
 from s3_deployment import S3AppStack
@@ -14,5 +16,5 @@ S3AppStack(app, "policy-as-code",
                region=os.environ["CDK_DEFAULT_REGION"]
            ),
            description='')
-
+Aspects.of(app).add(AwsSolutionsChecks())
 app.synth()

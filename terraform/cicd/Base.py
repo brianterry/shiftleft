@@ -104,7 +104,8 @@ class Base(core.Stack):
                 'kms:EnableKeyRotation',
                 'kms:GetKeyRotationStatus',
                 'config:*',
-                'iam:CreateRole'
+                'iam:CreateRole',
+                'iam:PutRolePolicy'
             ],
             resources=["*"]
             )

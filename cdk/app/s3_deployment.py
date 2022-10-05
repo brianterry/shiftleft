@@ -55,6 +55,10 @@ class S3AppStack(Stack):
                                # Uncomment encryption=aws_s3.BucketEncryption.KMS and encryption=aws_s3.BucketEncryption.KMS, to enable encryption
                                #encryption=aws_s3.BucketEncryption.KMS,
                                #bucket_key_enabled= True,
+                               
+                              # Uncomment to enable ssl
+                               #enforce_ssl=True,
+
 
                                lifecycle_rules=[
                                    aws_s3.LifecycleRule(

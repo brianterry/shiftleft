@@ -99,24 +99,19 @@ data "aws_iam_policy_document" "allow_public_read_access" {
 /*
 resource "aws_iam_role" "remediate" {
   name                = "remediate_role"
+  path                = "/system/"
   assume_role_policy  = data.aws_iam_policy_document.ssm_access.json 
   managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole"]
 }
 
 data "aws_iam_policy_document" "ssm_access" {
   statement {
+    actions = ["sts:AssumeRole"]
+
     principals {
       type        = "Service"
       identifiers = ["ssm.amazonaws.com"]
     }
-
-    actions = [
-      "s3:*"
-    ]
-
-    resources = [
-      aws_s3_bucket.b.arn
-    ]
   }
 }
 
@@ -127,11 +122,11 @@ resource "aws_config_remediation_configuration" "AwsConfigRemdiationS3" {
 
   parameter {
     name         = "AutomationAssumeRole"
-    resource_value = aws_iam_role.remediate.arn
+    static_value = aws_iam_role.remediate.arn
   }
   parameter {
     name           = "S3BucketName"
-    resource_value = aws_s3_bucket.b.id
+    static_value = aws_s3_bucket.b.id
   }
 
   automatic                  = true
@@ -146,3 +141,4 @@ resource "aws_config_remediation_configuration" "AwsConfigRemdiationS3" {
   }
 }
 */
+

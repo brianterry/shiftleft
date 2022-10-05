@@ -21,10 +21,23 @@ stack = S3AppStack(app, "policy-as-code",
 #Uncomment to enable Aspects
 #Aspects.of(app).add(AwsSolutionsChecks())
 
-#NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/Bucket/Key/Resource", suppressions=[
+#NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/AutomationAssumeRole/Resource", suppressions=[
+#    NagPackSuppression(
+#        id='AwsSolutions-IAM4',
+#        reason='No need to rotate',
+#    )
+#])
+#NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/AutomationAssumeRole/Resource", suppressions=[
 #    NagPackSuppression(
 #        id='AwsSolutions-KMS5',
-#        reason='No need to rotate',
+#        reason='No needed',
+#    )
+#])
+
+#NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/Bucket/Key/Resource", suppressions=[
+#    NagPackSuppression(
+#        id='AwsSolutions-IAM5',
+#        reason='Not needex',
 #    )
 #])
 #NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/Bucket/Resource", suppressions=[

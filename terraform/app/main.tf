@@ -94,3 +94,55 @@ data "aws_iam_policy_document" "allow_public_read_access" {
 
 // public access rule ....... end
 
+
+// uncomment the following to enable remediation
+/*
+resource "aws_iam_role" "remediate" {
+  name                = "remediate_role"
+  assume_role_policy  = data.aws_iam_policy_document.ssm_access.json 
+  managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole"]
+}
+
+data "aws_iam_policy_document" "ssm_access" {
+  statement {
+    principals {
+      type        = "Service"
+      identifiers = ["ssm.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      aws_s3_bucket.b.arn
+    ]
+  }
+}
+
+resource "aws_config_remediation_configuration" "AwsConfigRemdiationS3" {
+  config_rule_name = aws_config_config_rule.r.name
+  target_type      = "SSM_DOCUMENT"
+  target_id        = "AWS-DisableS3BucketPublicReadWrite"
+
+  parameter {
+    name         = "AutomationAssumeRole"
+    resource_value = aws_iam_role.remediate.arn
+  }
+  parameter {
+    name           = "S3BucketName"
+    resource_value = aws_s3_bucket.b.id
+  }
+
+  automatic                  = true
+  maximum_automatic_attempts = 3
+  retry_attempt_seconds      = 60
+
+  execution_controls {
+    ssm_controls {
+      concurrent_execution_rate_percentage = 25
+      error_percentage                     = 20
+    }
+  }
+}
+*/

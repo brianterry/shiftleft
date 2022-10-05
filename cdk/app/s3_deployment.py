@@ -46,10 +46,13 @@ class S3AppStack(Stack):
                                removal_policy=RemovalPolicy.DESTROY,
                                auto_delete_objects=False,
                                versioned=True,
-                               public_read_access=True,
+                               public_read_access=False,
+                               block_public_access=aws_s3.BlockPublicAccess.BLOCK_ALL,
 
                                # Uncomment encryption=aws_s3.BucketEncryption.KMS, to enable encryption
-                               # encryption=aws_s3.BucketEncryption.KMS,
+                               encryption=aws_s3.BucketEncryption.KMS_MANAGED,
+
+                               enforce_ssl=True,
 
                                lifecycle_rules=[
                                    aws_s3.LifecycleRule(

@@ -11,7 +11,7 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region  = "us-east-1"
+  region  = "us-west-2"
 }
 
 // Insert KMS key here
@@ -19,23 +19,78 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "b" {
-  bucket_prefix = "terraform-regula-validation"
+  bucket_prefix = "policy-as-code-bucket-terraform"
+  
+  versioning {
+    enabled = true
+  }
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-        // Uncomment to use KMS key
-        // sse_algorithm     = "aws:kms"
-        // kms_master_key_id = aws_kms_key.a.key_id
-      }
-      bucket_key_enabled = true
+  lifecycle_rule {
+    prefix  = "config/"
+    enabled = true
+
+    noncurrent_version_transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
+    }
+
+    noncurrent_version_transition {
+      days          = 60
+      storage_class = "GLACIER"
+    }
+
+    noncurrent_version_expiration {
+      days = 90
     }
   }
 }
 
-// Insert code to block S3 bucket public access below
-// End of block S3 bucket public access
+resource "aws_config_config_rule" "r" {
+  name = "S3PublicAccessSettingsTerraform"
+  description = "Checks that your Amazon S3 buckets do not allow public read access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL)."
+  maximum_execution_frequency = "One_Hour"
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+  }
+  scope {
+    compliance_resource_id = aws_s3_bucket.b.id
+    compliance_resource_types = ["AWS::S3::Bucket"]
+  }
+}
 
-// Insert S3 bucket policy here
-// End of S3 bucket policy
+// public access rule ....... start
+resource "aws_s3_bucket_public_access_block" "rule" {
+  bucket = aws_s3_bucket.b.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_policy" "allow_public_read_access" {
+  bucket = aws_s3_bucket.b.id
+  policy = data.aws_iam_policy_document.allow_public_read_access.json
+}
+
+data "aws_iam_policy_document" "allow_public_read_access" {
+  statement {
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject"
+    ]
+
+    resources = [
+      aws_s3_bucket.b.arn,
+      "${aws_s3_bucket.b.arn}/*",
+    ]
+  }
+}
+
+// public access rule ....... end
+

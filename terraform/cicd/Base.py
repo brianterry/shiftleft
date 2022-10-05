@@ -108,7 +108,7 @@ class Base(core.Stack):
                 "config:Get*",
                 "config:List*",
                 "config:Put*",
-                "config:Select*",
+                "config:Select*"
             ],
             resources=["*"]
             )

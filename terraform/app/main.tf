@@ -98,10 +98,14 @@ data "aws_iam_policy_document" "allow_public_read_access" {
 // uncomment the following to enable remediation
 /*
 resource "aws_iam_role" "remediate" {
-  name                = "remediate_role"
+  name                = "remediate_role_tf"
   path                = "/system/"
   assume_role_policy  = data.aws_iam_policy_document.ssm_access.json 
   managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole"]
+  inline_policy {
+    name   = "S3FullAccess-tf"
+    policy = data.aws_iam_policy_document.allow_s3.json
+  }
 }
 
 data "aws_iam_policy_document" "ssm_access" {
@@ -112,6 +116,18 @@ data "aws_iam_policy_document" "ssm_access" {
       type        = "Service"
       identifiers = ["ssm.amazonaws.com"]
     }
+  }
+}
+
+data "aws_iam_policy_document" "allow_s3" {
+  statement {
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      aws_s3_bucket.b.arn,
+    ]
   }
 }
 
@@ -141,4 +157,5 @@ resource "aws_config_remediation_configuration" "AwsConfigRemdiationS3" {
   }
 }
 */
+
 

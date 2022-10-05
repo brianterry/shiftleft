@@ -56,7 +56,7 @@ class S3AppStack(Stack):
                                #encryption=aws_s3.BucketEncryption.KMS,
                                #bucket_key_enabled= True,
                                
-                              # Uncomment to enable ssl
+                               # Uncomment to enable ssl
                                #enforce_ssl=True,
 
 

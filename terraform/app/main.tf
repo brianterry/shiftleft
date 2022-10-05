@@ -94,6 +94,8 @@ data "aws_iam_policy_document" "allow_public_read_access" {
 
 // public access rule ....... end
 
+// Insert Automation Role and CfnRemediationConfiguration
+   
 
 // uncomment the following to enable remediation
 /*
@@ -158,4 +160,4 @@ resource "aws_config_remediation_configuration" "AwsConfigRemdiationS3" {
 }
 */
 
-
+//End of Automation Role and CfnRemediationConfiguration

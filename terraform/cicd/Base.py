@@ -102,15 +102,8 @@ class Base(core.Stack):
             effect=aws_iam.Effect.ALLOW,
             actions=[
                 'kms:EnableKeyRotation',
-                'kms:GetKeyRotationStatus'
-                'kms:EnableKeyRotation',
                 'kms:GetKeyRotationStatus',
-                'config:BatchGet*',
-                'config:Describe*',
-                'config:Get*',
-                'config:List*',
-                'config:Put*',
-                'config:Select*'
+                'config:*'
             ],
             resources=["*"]
             )

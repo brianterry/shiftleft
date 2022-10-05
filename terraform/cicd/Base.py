@@ -98,6 +98,9 @@ class Base(core.Stack):
         scan.role.add_managed_policy(
             aws_iam.ManagedPolicy.from_aws_managed_policy_name('AWSKeyManagementServicePowerUser')
         )
+        scan.role.add_managed_policy(
+            aws_iam.ManagedPolicy.from_aws_managed_policy_name('AWSConfigRole')
+        )
         scan.role.add_to_policy(aws_iam.PolicyStatement(
             effect=aws_iam.Effect.ALLOW,
             actions=[

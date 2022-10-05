@@ -17,7 +17,16 @@ stack = S3AppStack(app, "policy-as-code",
                region=os.environ["CDK_DEFAULT_REGION"]
            ),
            description='')
+
+#Uncomment to enable Aspects
 #Aspects.of(app).add(AwsSolutionsChecks())
+
+#NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/Bucket/Key/Resource", suppressions=[
+#    NagPackSuppression(
+#        id='AwsSolutions-KMS5',
+#        reason='No need to rotate',
+#    )
+#])
 #NagSuppressions.add_resource_suppressions_by_path(stack, "/policy-as-code/Bucket/Resource", suppressions=[
 #    NagPackSuppression(
 #        id='AwsSolutions-S1',

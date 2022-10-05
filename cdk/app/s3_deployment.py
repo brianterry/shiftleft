@@ -56,7 +56,10 @@ class S3AppStack(Stack):
                                #encryption=aws_s3.BucketEncryption.KMS,
                                #bucket_key_enabled= True,
                                
-                               # Uncomment to enable ssl
+                               # Uncomment to clear AwsSolutions-S2 error
+                               #block_public_access=aws_s3.BlockPublicAccess.BLOCK_ALL, 
+                               
+                               # Uncomment to to clear AwsSolutions-S10 error
                                #enforce_ssl=True,
 
 

@@ -135,4 +135,3 @@ class S3AppStack(Stack):
         #                                }
         #                            }
         #                            )
-        # End of Automation Role and CfnRemediationConfiguration

@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 # This scripts downloads and installs cfn-guard latest version from github releases
 # It detects platforms, downloads the pre-built binary for the latest version installs
 # it in the ~/.guard/$MAJOR_VER/cfn-guard-v$MAJOR_VER-$OS_TYPE-latest/cfn-guard and symlinks ~/.guard/bin

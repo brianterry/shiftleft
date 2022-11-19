@@ -1,0 +1,21 @@
+{
+    "properties": {
+        "minBuckets": {
+            "description": "Minimum number of compliant buckets",
+            "type": "string"
+        },
+        "minQueues": {
+            "description": "Minimum number of compliant queues",
+            "type": "string"
+        },
+        "encryptionAlgorithm": {
+            "description": "Encryption algorithm for SSE",
+            "default": "AES256",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "additionalProperties": false,
+    "definitions": {},
+    "typeName": "MyCompany::Testing::Hook"
+}

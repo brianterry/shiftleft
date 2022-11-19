@@ -1,0 +1,419 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Construct",
+          "version": "1.174.0"
+        }
+      },
+      "policy-as-code": {
+        "id": "policy-as-code",
+        "path": "policy-as-code",
+        "children": {
+          "Bucket": {
+            "id": "Bucket",
+            "path": "policy-as-code/Bucket",
+            "children": {
+              "Key": {
+                "id": "Key",
+                "path": "policy-as-code/Bucket/Key",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "policy-as-code/Bucket/Key/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::KMS::Key",
+                      "aws:cdk:cloudformation:props": {
+                        "keyPolicy": {
+                          "Statement": [
+                            {
+                              "Action": "kms:*",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "AWS": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":iam::",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":root"
+                                    ]
+                                  ]
+                                }
+                              },
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "description": "Created by policy-as-code/Bucket",
+                        "tags": [
+                          {
+                            "key": "App",
+                            "value": "policy-as-code"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-kms.CfnKey",
+                      "version": "1.174.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-kms.Key",
+                  "version": "1.174.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "policy-as-code/Bucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketEncryption": {
+                      "serverSideEncryptionConfiguration": [
+                        {
+                          "bucketKeyEnabled": true,
+                          "serverSideEncryptionByDefault": {
+                            "sseAlgorithm": "aws:kms",
+                            "kmsMasterKeyId": {
+                              "Fn::GetAtt": [
+                                "BucketKey7E4AEAB8",
+                                "Arn"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "lifecycleConfiguration": {
+                      "rules": [
+                        {
+                          "abortIncompleteMultipartUpload": {
+                            "daysAfterInitiation": 5
+                          },
+                          "noncurrentVersionExpiration": {
+                            "noncurrentDays": 180
+                          },
+                          "noncurrentVersionTransitions": [
+                            {
+                              "storageClass": "STANDARD_IA",
+                              "transitionInDays": 31
+                            }
+                          ],
+                          "status": "Enabled",
+                          "transitions": [
+                            {
+                              "storageClass": "STANDARD_IA",
+                              "transitionInDays": 60
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "publicAccessBlockConfiguration": {
+                      "blockPublicAcls": true,
+                      "blockPublicPolicy": true,
+                      "ignorePublicAcls": true,
+                      "restrictPublicBuckets": true
+                    },
+                    "tags": [
+                      {
+                        "key": "App",
+                        "value": "policy-as-code"
+                      }
+                    ],
+                    "versioningConfiguration": {
+                      "status": "Enabled"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-s3.CfnBucket",
+                  "version": "1.174.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "policy-as-code/Bucket/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "policy-as-code/Bucket/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "bucket": {
+                          "Ref": "Bucket83908E77"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "s3:*",
+                              "Condition": {
+                                "Bool": {
+                                  "aws:SecureTransport": "false"
+                                }
+                              },
+                              "Effect": "Deny",
+                              "Principal": {
+                                "AWS": "*"
+                              },
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "Bucket83908E77",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "Bucket83908E77",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-s3.CfnBucketPolicy",
+                      "version": "1.174.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-s3.BucketPolicy",
+                  "version": "1.174.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-s3.Bucket",
+              "version": "1.174.0"
+            }
+          },
+          "AwsConfigRuleS3": {
+            "id": "AwsConfigRuleS3",
+            "path": "policy-as-code/AwsConfigRuleS3",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "policy-as-code/AwsConfigRuleS3/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Config::ConfigRule",
+                  "aws:cdk:cloudformation:props": {
+                    "source": {
+                      "owner": "AWS",
+                      "sourceIdentifier": "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+                    },
+                    "configRuleName": "S3PublicAccessSettings",
+                    "description": "Checks that your Amazon S3 buckets do not allow public read access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).",
+                    "maximumExecutionFrequency": "One_Hour",
+                    "scope": {
+                      "complianceResourceId": {
+                        "Ref": "Bucket83908E77"
+                      },
+                      "complianceResourceTypes": [
+                        "AWS::S3::Bucket"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-config.CfnConfigRule",
+                  "version": "1.174.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-config.ManagedRule",
+              "version": "1.174.0"
+            }
+          },
+          "AmazonSSMAutomation": {
+            "id": "AmazonSSMAutomation",
+            "path": "policy-as-code/AmazonSSMAutomation",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.174.0"
+            }
+          },
+          "AutomationAssumeRole": {
+            "id": "AutomationAssumeRole",
+            "path": "policy-as-code/AutomationAssumeRole",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "policy-as-code/AutomationAssumeRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": {
+                              "Fn::FindInMap": [
+                                "ServiceprincipalMap",
+                                {
+                                  "Ref": "AWS::Region"
+                                },
+                                "ssm"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      "arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole"
+                    ],
+                    "policies": [
+                      {
+                        "policyName": "S3FullAccess",
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "s3:*",
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::GetAtt": [
+                                  "Bucket83908E77",
+                                  "Arn"
+                                ]
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnRole",
+                  "version": "1.174.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-iam.Role",
+              "version": "1.174.0"
+            }
+          },
+          "AwsConfigRemdiationS3": {
+            "id": "AwsConfigRemdiationS3",
+            "path": "policy-as-code/AwsConfigRemdiationS3",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Config::RemediationConfiguration",
+              "aws:cdk:cloudformation:props": {
+                "configRuleName": {
+                  "Ref": "AwsConfigRuleS37A32F907"
+                },
+                "targetId": "AWS-DisableS3BucketPublicReadWrite",
+                "targetType": "SSM_DOCUMENT",
+                "automatic": true,
+                "maximumAutomaticAttempts": 3,
+                "parameters": {
+                  "AutomationAssumeRole": {
+                    "StaticValue": {
+                      "Values": [
+                        {
+                          "Fn::GetAtt": [
+                            "AutomationAssumeRoleAC6E73A7",
+                            "Arn"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "S3BucketName": {
+                    "ResourceValue": {
+                      "Value": "RESOURCE_ID"
+                    }
+                  }
+                },
+                "retryAttemptSeconds": 60
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-config.CfnRemediationConfiguration",
+              "version": "1.174.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "policy-as-code/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "policy-as-code/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.174.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "policy-as-code/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnCondition",
+                  "version": "1.174.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.174.0"
+            }
+          },
+          "Service-principalMap": {
+            "id": "Service-principalMap",
+            "path": "policy-as-code/Service-principalMap",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.CfnMapping",
+              "version": "1.174.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.174.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "@aws-cdk/core.App",
+      "version": "1.174.0"
+    }
+  }
+}

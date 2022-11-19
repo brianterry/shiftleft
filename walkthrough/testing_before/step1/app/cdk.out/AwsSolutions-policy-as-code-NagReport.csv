@@ -1,0 +1,8 @@
+Rule ID,Resource ID,Compliance,Exception Reason,Rule Level,Rule Info
+"AwsSolutions-KMS5","policy-as-code/Bucket/Key/Resource","Non-Compliant","N/A","Error","The KMS Symmetric key does not have automatic key rotation enabled."
+"AwsSolutions-S1","policy-as-code/Bucket/Resource","Non-Compliant","N/A","Error","The S3 Bucket has server access logs disabled."
+"AwsSolutions-S2","policy-as-code/Bucket/Resource","Non-Compliant","N/A","Error","The S3 Bucket does not have public access restricted and blocked."
+"AwsSolutions-S3","policy-as-code/Bucket/Resource","Compliant","N/A","Error","The S3 Bucket does not default encryption enabled."
+"AwsSolutions-S10","policy-as-code/Bucket/Resource","Non-Compliant","N/A","Error","The S3 Bucket does not require requests to use SSL."
+"AwsSolutions-IAM4","policy-as-code/AutomationAssumeRole/Resource","Non-Compliant","N/A","Error","The IAM user, role, or group uses AWS managed policies."
+"AwsSolutions-IAM5","policy-as-code/AutomationAssumeRole/Resource","Non-Compliant","N/A","Error","The IAM entity contains wildcard permissions and does not have a cdk_nag rule suppression with evidence for those permission."

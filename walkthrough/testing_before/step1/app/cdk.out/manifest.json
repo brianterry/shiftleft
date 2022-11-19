@@ -1,0 +1,355 @@
+{
+  "version": "20.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "policy-as-code": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "policy-as-code.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/policy-as-code/Bucket/Key/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketKey7E4AEAB8",
+            "trace": [
+              "new Key (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-kms/lib/key.js:302:26)",
+              "Bucket.parseEncryption (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-s3/lib/bucket.js:953:58)",
+              "new Bucket (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-s3/lib/bucket.js:662:58)",
+              "Kernel._create (/tmp/tmpzpdlpg83/lib/program.js:7490:29)",
+              "Kernel.create (/tmp/tmpzpdlpg83/lib/program.js:7228:29)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-KMS5: The KMS Symmetric key does not have automatic key rotation enabled.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkSecurityCompliance (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:945:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:75:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/Bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Bucket83908E77",
+            "trace": [
+              "new Bucket (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-s3/lib/bucket.js:666:26)",
+              "Kernel._create (/tmp/tmpzpdlpg83/lib/program.js:7490:29)",
+              "Kernel.create (/tmp/tmpzpdlpg83/lib/program.js:7228:29)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-S1: The S3 Bucket has server access logs disabled.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkStorage (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:223:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:69:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-S2: The S3 Bucket does not have public access restricted and blocked.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkStorage (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:231:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:69:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-S10: The S3 Bucket does not require requests to use SSL.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkStorage (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:247:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:69:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/AwsConfigRuleS3/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsConfigRuleS37A32F907",
+            "trace": [
+              "new ManagedRule (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-config/lib/rule.js:151:22)",
+              "Kernel._create (/tmp/tmpzpdlpg83/lib/program.js:7490:29)",
+              "Kernel.create (/tmp/tmpzpdlpg83/lib/program.js:7228:29)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/AutomationAssumeRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AutomationAssumeRoleAC6E73A7",
+            "trace": [
+              "new Role (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-iam/lib/role.js:63:22)",
+              "Kernel._create (/tmp/tmpzpdlpg83/lib/program.js:7490:29)",
+              "Kernel.create (/tmp/tmpzpdlpg83/lib/program.js:7228:29)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-IAM4: The IAM user, role, or group uses AWS managed policies.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkSecurityCompliance (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:889:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:75:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          },
+          {
+            "type": "aws:cdk:error",
+            "data": "AwsSolutions-IAM5: The IAM entity contains wildcard permissions and does not have a cdk_nag rule suppression with evidence for those permission.\n",
+            "trace": [
+              "Annotations.addMessage (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:86:42)",
+              "Annotations.addError (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/annotations.js:50:14)",
+              "AwsSolutionsChecks.applyRule (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/nag-pack.js:106:60)",
+              "AwsSolutionsChecks.checkSecurityCompliance (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:897:14)",
+              "AwsSolutionsChecks.visit (/tmp/jsii-kernel-iXNp8P/node_modules/cdk-nag/lib/packs/aws-solutions.js:75:18)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:86:20)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "recurse (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:98:17)",
+              "invokeAspects (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:72:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/AwsConfigRemdiationS3": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsConfigRemdiationS3",
+            "trace": [
+              "Kernel._create (/tmp/tmpzpdlpg83/lib/program.js:7490:29)",
+              "Kernel.create (/tmp/tmpzpdlpg83/lib/program.js:7228:29)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:139:9",
+              "visit (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:200:9)",
+              "visit (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:197:9)",
+              "injectMetadataResources (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:30:35)",
+              "/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:139:9",
+              "visit (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:200:9)",
+              "visit (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:197:9)",
+              "injectMetadataResources (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:5)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ],
+        "/policy-as-code/Service-principalMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceprincipalMap",
+            "trace": [
+              "Object.deployTimeLookup (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/region-lookup.js:35:19)",
+              "Stack.regionalFact (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stack.js:638:32)",
+              "ServicePrincipalToken.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/aws-iam/lib/principals.js:850:22)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/resolvable.js:64:30)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:198:22)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:131:55)",
+              "Object.resolve [as mapToken] (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "TokenizedStringFragments.mapTokens (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/string-fragments.js:78:43)",
+              "RememberingTokenResolver.resolveString (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/resolvable.js:93:26)",
+              "RememberingTokenResolver.resolveString (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:201:27)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:98:54)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:122:51",
+              "Array.map (<anonymous>)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:122:14)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/resolvable.js:66:32)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:198:22)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:131:55)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/resolvable.js:66:32)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:198:22)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:131:55)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/resolvable.js:66:32)",
+              "RememberingTokenResolver.resolveToken (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:198:22)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:131:55)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:58:48)",
+              "resolve (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:146:51)",
+              "Object.findTokens (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/resolve.js:184:5)",
+              "findAllReferences (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/refs.js:97:38)",
+              "Object.resolveReferences (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/refs.js:20:19)",
+              "Object.prepareApp (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/prepare-app.js:30:12)",
+              "Object.synthesize (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/private/synthesis.js:21:19)",
+              "App.synth (/tmp/jsii-kernel-iXNp8P/node_modules/@aws-cdk/core/lib/stage.js:104:41)",
+              "/tmp/tmpzpdlpg83/lib/program.js:7304:105",
+              "Kernel._ensureSync (/tmp/tmpzpdlpg83/lib/program.js:7884:28)",
+              "Kernel.invoke (/tmp/tmpzpdlpg83/lib/program.js:7304:34)",
+              "KernelHost.processRequest (/tmp/tmpzpdlpg83/lib/program.js:10466:36)",
+              "KernelHost.run (/tmp/tmpzpdlpg83/lib/program.js:10429:22)",
+              "Immediate._onImmediate (/tmp/tmpzpdlpg83/lib/program.js:10430:46)",
+              "processImmediate (node:internal/timers:466:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "policy-as-code"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+   {
+    "typeName": "MyCompany::Testing::Hook",
+    "description": "Verifies S3 bucket and SQS queues properties before create and update",
+    "sourceUrl": "https://mycorp.com/my-repo.git",
+    "documentationUrl": "https://mycorp.com/documentation",
+    "typeConfiguration": {
+        "properties": {
+            "minBuckets": {
+                "description": "Minimum number of compliant buckets",
+                "type": "string"
+                
+            },
+            "minQueues": {
+                "description": "Minimum number of compliant queues",
+                "type": "string"
+            },
+            "encryptionAlgorithm": {
+                "description": "Encryption algorithm for SSE",
+                "default": "AES256",
+                "type": "string"
+            }
+        },
+        "required": [],
+        "additionalProperties": false
+    },
+    "handlers": {
+        "preCreate": {
+            "targetNames": [
+                "AWS::S3::Bucket",
+                "AWS::SQS::Queue"
+            ],
+            "permissions": []
+        },
+        "preUpdate": {
+            "targetNames": [
+                "AWS::S3::Bucket",
+                "AWS::SQS::Queue"
+            ],
+            "permissions": []
+        }
+    },
+    "additionalProperties": false
+}

@@ -101,7 +101,7 @@ class S3AppStack(Stack):
                                                     ResourceType.S3_BUCKET, bucket.bucket_name)
                                                 )
         #####################################################################################################################################################
-        #Setting up Remediation [CDK app]  step 2 begains here
+        #Setting up Remediation [CDK app]  step 2 starts here
         
         #automation_assume_role = aws_iam.Role(self,
         #                                      'AutomationAssumeRole',
